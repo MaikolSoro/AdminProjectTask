@@ -4,9 +4,9 @@ import Task from './Task';
 const ListTask = () => {
 
 	const tasks = [
-		{ name: 'Eligir plataforma', estado: true },
-		{ name: 'Eligir Colores', estado: false },
-		{ name: 'Eligir Hosting', estado: true },
+		{ name: 'Eligir plataforma', state: true },
+		{ name: 'Eligir Colores', state: false },
+		{ name: 'Eligir Hosting', state: true },
 	];
 
 	return (
@@ -23,6 +23,10 @@ const ListTask = () => {
 						))
 				}
 			</ul>
+			<button
+				type="button"
+				className="btn btn-primario"
+			>Eliminar Proyectos &times;</button>
 		</Fragment>
 
 	);
