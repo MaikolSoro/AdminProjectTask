@@ -25,6 +25,8 @@ const NewProject = () => {
 		// validate the project
 
 		// Add to state
+
+		//Restart the form
 	}
 
 	return ( 
