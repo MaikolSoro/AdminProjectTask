@@ -1,20 +1,20 @@
-import React from 'react';
-import NewProject from '../projects/NewProject';
-import ListProjects from '../projects/ListProjects';
+import React from 'react'
+import NewProject from '../projects/NewProject'
+import ListProjects from '../projects/ListProjects'
 
 const Sidebar = () => {
-	return (  
-		<aside>
-			<h1>MERN<span>Tasks</span></h1>
-			
-			<NewProject />
+  return (
+    <aside>
+      <h1>MERN<span>Tasks</span></h1>
 
-			<div className="proyectos">
-			 <h2>Tus proyectos</h2>
-				<ListProjects  />
-			</div>
-		</aside>
-	);
+      <NewProject />
+
+      <div className="proyectos">
+        <h2>Tus proyectos</h2>
+        <ListProjects />
+      </div>
+    </aside>
+  )
 }
- 
-export default Sidebar;
+
+export default Sidebar
