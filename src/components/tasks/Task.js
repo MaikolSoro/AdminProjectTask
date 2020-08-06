@@ -1,8 +1,8 @@
 import React from 'react';
 
 const Task = () => {
-	return (  
-		
+	return (
+		<p>Desde tarea</p>
 	);
 }
 
