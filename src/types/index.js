@@ -1,1 +1,2 @@
 export const FORM_PROJECT = 'FORM_PROJECT'
+export const GETPROJECTS = 'GETPROJECTS'
