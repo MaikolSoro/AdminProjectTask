@@ -1,10 +1,11 @@
 /* eslint-disable no-unused-vars */
 
 import React, { useReducer } from 'react'
+import * as uuid from 'uuid'
 
 import ProjectContext from './projectContext'
 import ProjectReducer from './projectReducer'
-import { FORM_PROJECT, GETPROJECTS } from '../../types'
+import { FORM_PROJECT, GETPROJECTS, ADD_PROJECT } from '../../types'
 
 
 const ProjectState = props => {
@@ -39,13 +40,25 @@ const ProjectState = props => {
 			payload: projects
 		})
 	}
+
+	// Add new project
+	const AddProject = project => {
+		project.id = uuid.v4();
+
+		// Insert the project in the state
+		dispatch({
+			type: ADD_PROJECT,
+			payload: project
+		})
+	}
 	return (
 		<ProjectContext.Provider
 			value={{
 				projects: state.projects,
 				form: state.form,
 				showForm,
-				getProjects
+				getProjects,
+				AddProject
 			}}
 		>
 			{props.children}

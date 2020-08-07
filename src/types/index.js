@@ -1,2 +1,3 @@
 export const FORM_PROJECT = 'FORM_PROJECT'
 export const GETPROJECTS = 'GETPROJECTS'
+export const ADD_PROJECT = 'ADD_PROJECT'
