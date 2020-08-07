@@ -5,7 +5,7 @@ import * as uuid from 'uuid'
 
 import ProjectContext from './projectContext'
 import ProjectReducer from './projectReducer'
-import { FORM_PROJECT, GETPROJECTS, ADD_PROJECT, VALIDATE_FORM } from '../../types'
+import { FORM_PROJECT, GETPROJECTS, ADD_PROJECT, VALIDATE_FORM, CURRENT_PROJECT } from '../../types'
 
 
 const ProjectState = props => {
@@ -19,7 +19,8 @@ const ProjectState = props => {
 
 		projects: [],
 		form: false,
-		errorform: false
+		errorform: false,
+		project: null
 	}
 
 	// Dispatch to execute actions
@@ -59,16 +60,27 @@ const ProjectState = props => {
 			type: VALIDATE_FORM
 		})
 	}
+
+	// Select the project that the user clicks
+	const currentProject = projectId => {
+		dispatch({
+			type: CURRENT_PROJECT,
+			payload: projectId
+		})
+	}
+
 	return (
 		<ProjectContext.Provider
 			value={{
 				projects: state.projects,
 				form: state.form,
 				errorform: state.errorform,
+				project: state.project,
 				showForm,
 				getProjects,
 				AddProject,
-				showError
+				showError,
+				currentProject
 			}}
 		>
 			{props.children}
