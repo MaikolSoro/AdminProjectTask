@@ -16,6 +16,7 @@ const Task = ({ task }) => {
 
 	// Extract the project
 	const [currentProject] = project
+
 	// Function that is executed, when the user presses the delete task button
 	const taskDelete = (id) => {
 		deleteTask(id)

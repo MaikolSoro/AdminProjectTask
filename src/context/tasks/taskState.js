@@ -1,6 +1,7 @@
 import React, { useReducer } from 'react'
 import TaskContext from './taskContext'
 import TaskReducer from './taskReducer'
+import * as uuid from 'uuid'
 import { TASKS_PROJECT, ADD_TASK, VALIDATE_TASK, DELETE_TASK } from '../../types';
 
 
@@ -31,6 +32,7 @@ const TaskState = props => {
 
 	// Add a task to the selected project
 	const addTask = task => {
+		task.id = uuid.v4();
 		dispatch({
 			type: ADD_TASK,
 			payload: task
@@ -45,7 +47,7 @@ const TaskState = props => {
 	}
 
 	// Deleted task by id
-	const deleteTask = (id) => {
+	const deleteTask = id => {
 		dispatch({
 			type: DELETE_TASK,
 			payload: id

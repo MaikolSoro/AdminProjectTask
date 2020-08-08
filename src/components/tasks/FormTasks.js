@@ -43,8 +43,8 @@ const FormTasks = () => {
 		}
 
 		// Add the new task to the task state
+		task.state = false
 		task.projectId = currentProject.id
-		task.estado = false
 		addTask(task)
 
 		// 	Getting and filter the task in the current project
