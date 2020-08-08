@@ -1,6 +1,26 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import ProjectContext from '../../context/projects/projectContext';
+import taskContext from '../../context/tasks/taskContext';
+
 
 const Task = ({ task }) => {
+
+
+	// Extract if a project is active
+	const projectsContext = useContext(ProjectContext)
+	const { project } = projectsContext;
+
+	// Getting function from task context
+	const tasksContext = useContext(taskContext)
+	const { deleteTask, getTasks } = tasksContext
+
+	// Extract the project
+	const [currentProject] = project
+	// Function that is executed, when the user presses the delete task button
+	const taskDelete = (id) => {
+		deleteTask(id)
+		getTasks(currentProject.id)
+	}
 	return (
 		<li className="tarea sombra">
 			<p>{task.name}</p>
@@ -31,6 +51,7 @@ const Task = ({ task }) => {
 				<button
 					type="button"
 					className="btn btn-segundario"
+					onClick={() => taskDelete(task.id)}
 				>Eliminar</button>
 			</div>
 		</li>
