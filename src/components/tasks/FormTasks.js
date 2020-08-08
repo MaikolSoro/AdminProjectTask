@@ -11,7 +11,7 @@ const FormTasks = () => {
 
 	// Getting function from task context
 	const tasksContext = useContext(taskContext)
-	const { addTask } = tasksContext;
+	const { errortask, addTask, validTask, getTasks } = tasksContext;
 
 	// State the form
 	const [task, saveTask] = useState({
@@ -37,14 +37,24 @@ const FormTasks = () => {
 		e.preventDefault()
 
 		// validate
-
-		// Pass validation
+		if (name.trim() === '') {
+			validTask()
+			return;
+		}
 
 		// Add the new task to the task state
 		task.projectId = currentProject.id
 		task.estado = false
 		addTask(task)
+
+		// 	Getting and filter the task in the current project
+		getTasks(currentProject.id)
+
 		// Restart the form
+		saveTask({
+			name: ''
+		})
+
 	}
 	return (
 		<div className="formulario">
@@ -70,6 +80,7 @@ const FormTasks = () => {
 					/>
 				</div>
 			</form>
+			{errortask ? <p className="mensaje error">El nombre  de la tarea es obligatorio</p> : null}
 		</div>
 
 	);
