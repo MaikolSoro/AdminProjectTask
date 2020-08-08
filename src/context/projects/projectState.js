@@ -5,7 +5,7 @@ import * as uuid from 'uuid'
 
 import ProjectContext from './projectContext'
 import ProjectReducer from './projectReducer'
-import { FORM_PROJECT, GETPROJECTS, ADD_PROJECT, VALIDATE_FORM, CURRENT_PROJECT } from '../../types'
+import { FORM_PROJECT, GETPROJECTS, ADD_PROJECT, VALIDATE_FORM, CURRENT_PROJECT, DELETE_PROJECT } from '../../types'
 
 
 const ProjectState = props => {
@@ -69,6 +69,15 @@ const ProjectState = props => {
 		})
 	}
 
+	// Delete a project
+
+	const deleteProject = projectId => {
+		dispatch({
+			type: DELETE_PROJECT,
+			payload: projectId
+		})
+	}
+
 	return (
 		<ProjectContext.Provider
 			value={{
@@ -80,7 +89,8 @@ const ProjectState = props => {
 				getProjects,
 				AddProject,
 				showError,
-				currentProject
+				currentProject,
+				deleteProject
 			}}
 		>
 			{props.children}
