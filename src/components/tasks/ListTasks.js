@@ -4,7 +4,7 @@ import ProjectContext from '../../context/projects/projectContext';
 
 const ListTask = () => {
 
-	// Get the state of the projects
+	// Extract projects from initial state
 
 	const projectsContext = useContext(ProjectContext);
 	const { project } = projectsContext;
