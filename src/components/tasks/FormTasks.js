@@ -13,9 +13,22 @@ const FormTasks = () => {
 	// Array destructuring to extract the current project
 	// const [currentProject] = project;
 
+	const onSubmit = e => {
+		e.preventDefault()
+
+		// validate
+
+		// Pass validation
+
+		// Add the new task to the task state
+
+		// Restart the form
+	}
 	return (
 		<div className="formulario">
-			<form>
+			<form
+				onSubmit={onSubmit}
+			>
 				<div className="contenedor-input">
 					<input
 						type="text"
