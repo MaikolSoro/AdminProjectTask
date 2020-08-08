@@ -11,6 +11,7 @@ const TaskState = props => {
 			{ name: 'Eligir Colores', state: false, projectId: 2 },
 			{ name: 'Eligir Hosting', state: true, projectId: 3 },
 		],
+		tasksproject: null
 	}
 
 	// Create dispatch and state
@@ -30,6 +31,7 @@ const TaskState = props => {
 		<TaskContext.Provider
 			value={{
 				tasks: state.tasks,
+				tasksproject: state.tasksproject,
 				getTasks
 			}}
 		>
