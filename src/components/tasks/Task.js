@@ -12,7 +12,7 @@ const Task = ({ task }) => {
 
 	// Getting function from task context
 	const tasksContext = useContext(taskContext)
-	const { deleteTask, getTasks } = tasksContext
+	const { deleteTask, getTasks, changeStatusTask } = tasksContext
 
 	// Extract the project
 	const [currentProject] = project
@@ -21,6 +21,16 @@ const Task = ({ task }) => {
 	const taskDelete = (id) => {
 		deleteTask(id)
 		getTasks(currentProject.id)
+	}
+
+	// Function that modifies the status of tasks
+	const changeStatus = task => {
+		if (task.state) {
+			task.state = false
+		} else {
+			task.state = true
+		}
+		changeStatusTask(task)
 	}
 	return (
 		<li className="tarea sombra">
@@ -32,12 +42,14 @@ const Task = ({ task }) => {
 						<button
 							type="button"
 							className="completo"
+							onClick={() => changeStatus(task)}
 						>Completo</button>
 					) :
 					(
 						<button
 							type="button"
 							className="incompleto"
+							onClick={() => changeStatus(task)}
 						>Incompleto</button>
 
 					)
