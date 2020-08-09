@@ -1,7 +1,4 @@
-<p align="center">
-    ![Captura de pantalla (123)](https://user-images.githubusercontent.com/46753453/89725407-6dfbdd80-d9cc-11ea-8f9f-bf265cce8e68.png)
 
-</p>
 <h1 align="center">
     Project and task manager🌐🚀📝💼
 </h1>
