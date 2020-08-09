@@ -3,14 +3,14 @@
 
 </p>
 <h1 align="center">
-Project and task manager🌐🚀📝💼
+    Project and task manager🌐🚀📝💼
 </h1>
 
 It is a project that organizes and creates projects and tasks📝💼
 
 ### Sections
--Projects
--Tasks
+- Projects
+- Tasks
 
 ### Features
 - Responsive Design, optimized for Mobile devices
