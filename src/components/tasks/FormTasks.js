@@ -11,7 +11,7 @@ const FormTasks = () => {
 
 	// Getting function from task context
 	const tasksContext = useContext(taskContext)
-	const { taskSelected, errortask, addTask, validTask, getTasks } = tasksContext;
+	const { taskSelected, errortask, addTask, validTask, getTasks, updateTask } = tasksContext;
 
 	// Effect the detects if there is a selected task
 	useEffect(() => {
@@ -52,11 +52,18 @@ const FormTasks = () => {
 			validTask()
 			return;
 		}
+		// If it is editing or if it is a new task
+		if (taskSelected === null) {
+			// new task
 
-		// Add the new task to the task state
-		task.state = false
-		task.projectId = currentProject.id
-		addTask(task)
+			// Add the new task to the task state
+			task.state = false
+			task.projectId = currentProject.id
+			addTask(task)
+		} else {
+			// Update existing task
+			updateTask(task)
+		}
 
 		// 	Getting and filter the task in the current project
 		getTasks(currentProject.id)
