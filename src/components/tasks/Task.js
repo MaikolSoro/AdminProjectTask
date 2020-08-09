@@ -12,7 +12,7 @@ const Task = ({ task }) => {
 
 	// Getting function from task context
 	const tasksContext = useContext(taskContext)
-	const { deleteTask, getTasks, changeStatusTask } = tasksContext
+	const { deleteTask, getTasks, changeStatusTask, saveCurrentTask } = tasksContext
 
 	// Extract the project
 	const [currentProject] = project
@@ -31,6 +31,10 @@ const Task = ({ task }) => {
 			task.state = true
 		}
 		changeStatusTask(task)
+	}
+	// Add a current task when the user wants to edit it
+	const selectTask = (task) => {
+		saveCurrentTask(task)
 	}
 	return (
 		<li className="tarea sombra">
@@ -59,6 +63,7 @@ const Task = ({ task }) => {
 				<button
 					type="button"
 					className="btn btn-primario"
+					onClick={() => selectTask(task)}
 				>Editar</button>
 
 				<button

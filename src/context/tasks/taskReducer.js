@@ -1,4 +1,4 @@
-import { TASKS_PROJECT, ADD_TASK, VALIDATE_TASK, DELETE_TASK, STATE_TASK } from '../../types';
+import { TASKS_PROJECT, ADD_TASK, VALIDATE_TASK, DELETE_TASK, STATE_TASK, CURRENT_TASK } from '../../types';
 
 export default (state, action) => {
 	switch (action.type) {
@@ -28,6 +28,11 @@ export default (state, action) => {
 			return {
 				...state,
 				tasks: state.tasksproject.map(task => task.id === action.payload.id ? action.payload : task)
+			}
+		case CURRENT_TASK:
+			return {
+				...state,
+				taskSelected: action.payload
 			}
 
 		default:
