@@ -11,18 +11,18 @@ const FormTasks = () => {
 
 	// Getting function from task context
 	const tasksContext = useContext(taskContext)
-	const { taskSelected, errortask, addTask, validTask, getTasks, updateTask } = tasksContext;
+	const { taskselected, errortask, addTask, validTask, getTasks, updateTask, cleanTask } = tasksContext;
 
 	// Effect the detects if there is a selected task
 	useEffect(() => {
-		if (taskSelected !== null) {
-			saveTask(taskSelected)
+		if (taskselected !== null) {
+			saveTask(taskselected)
 		} else {
 			saveTask({
 				name: ''
 			})
 		}
-	}, [taskSelected])
+	}, [taskselected])
 
 	// State the form
 	const [task, saveTask] = useState({
@@ -53,7 +53,7 @@ const FormTasks = () => {
 			return;
 		}
 		// If it is editing or if it is a new task
-		if (taskSelected === null) {
+		if (taskselected === null) {
 			// new task
 
 			// Add the new task to the task state
@@ -63,6 +63,9 @@ const FormTasks = () => {
 		} else {
 			// Update existing task
 			updateTask(task)
+
+			// Deleted task selected the state
+			cleanTask()
 		}
 
 		// 	Getting and filter the task in the current project
@@ -94,7 +97,7 @@ const FormTasks = () => {
 					<input
 						type="submit"
 						className="btn btn-primario btn-submit btn-block"
-						value={taskSelected ? 'Editar Tarea' : 'Agregar Tarea'}
+						value={taskselected ? 'Editar Tarea' : 'Agregar Tarea'}
 					/>
 				</div>
 			</form>
