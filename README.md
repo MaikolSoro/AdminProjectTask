@@ -1,7 +1,24 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center">
+    This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+</p>
+<h1 align="center">
+Project and task manager🌐🚀📝💼
+</h1>
 
-## Available Scripts
+It is a project that organizes and creates projects and tasks📝💼
 
+### Sections
+-Projects
+-Tasks
+
+### Features
+- Responsive Design, optimized for Mobile devices
+- Reactjs
+- Nodejs
+- MongoDB
+
+
+## 🚀 Quick start
 In the project directory, you can run:
 
 ### `yarn start`
