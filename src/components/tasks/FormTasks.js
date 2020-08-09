@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import ProjectContext from '../../context/projects/projectContext'
 import taskContext from '../../context/tasks/taskContext';
 
@@ -11,7 +11,18 @@ const FormTasks = () => {
 
 	// Getting function from task context
 	const tasksContext = useContext(taskContext)
-	const { errortask, addTask, validTask, getTasks } = tasksContext;
+	const { taskSelected, errortask, addTask, validTask, getTasks } = tasksContext;
+
+	// Effect the detects if there is a selected task
+	useEffect(() => {
+		if (taskSelected !== null) {
+			saveTask(taskSelected)
+		} else {
+			saveTask({
+				name: ''
+			})
+		}
+	}, [taskSelected])
 
 	// State the form
 	const [task, saveTask] = useState({
@@ -76,7 +87,7 @@ const FormTasks = () => {
 					<input
 						type="submit"
 						className="btn btn-primario btn-submit btn-block"
-						value="Agregar Tarea"
+						value={taskSelected ? 'Editar Tarea' : 'Agregar Tarea'}
 					/>
 				</div>
 			</form>
