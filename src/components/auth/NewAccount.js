@@ -1,7 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
+import AlertContext from '../../context/alerts/alertContext'
 
 const NewAccount = () => {
+
+  // eslint-disable-next-line no-irregular-whitespace
+  // Extract values ​​from context
+
+  const alertContext = useContext(AlertContext);
+
+  const { alert, showAlert } = alertContext;
+
   // STATE TO LOGIN
   const [user, saveUser] = useState({
     name: '',
@@ -24,14 +33,22 @@ const NewAccount = () => {
     e.preventDefault()
 
     // Validate that there are no empty fields
+    if (name.trim() === '' ||
+      email.trim() === '' ||
+      password.trim() === '' ||
+      confirmar.trim() === '') {
+      showAlert('Todos los campos son obligatorios', 'alert-error');
+    }
 
     // minimum password of 6 characters
 
     // Check if the two passwords are the same
     // Pass it to action
   }
+
   return (
     <div className="form-usuario">
+      {alert ? (<div className={`alert ${alert.category}`}> {alert.msg}</div>) : null}
       <div className="contenedor-form  sombra-dark">
         <h1>Obtener una cuenta</h1>
 
@@ -89,11 +106,11 @@ const NewAccount = () => {
 
         </form>
         <Link to={'/'} className="enlace-cuenta">
-					Volver a Iniciar Sesión
+          Volver a Iniciar Sesión
         </Link>
       </div>
     </div>
-	 )
+  )
 }
 
 export default NewAccount
