@@ -6,7 +6,6 @@
 
 ## License
 [![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://opensource.org/licenses/MIT)
-![GitHub commit activity](https://img.shields.io/github/commit-activity/m/MaikolSoro/AdminProjectTask)
 ![Twitter URL](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2Fmaikol_soro)
 
 It is a project that organizes and creates projects and tasks📝💼
