@@ -6,11 +6,8 @@
 
 ## License
 [![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://opensource.org/licenses/MIT)
-
-
-## Pull Requests
-[![GitHub pull requests](https://img.shields.io/github/issues-pr/cdnjs/cdnjs.svg?style=flat)](https://github.com/MaikolSoro/AdminProjectTask/pull/)
-[![PR's Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat)](http://makeapullrequest.com)  
+[![GitHub last commits](https://img.shields.io/github/last-commit/google/skia.svg?style=flat)](https://github.com/MaikolSoro/AdminProjectTask/commit/)
+ 
 
 
 It is a project that organizes and creates projects and tasks📝💼
