@@ -3,7 +3,7 @@
     Project and task manager🌐🚀📝💼
 </h1>
 ## License
-[![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
+![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)
 
 It is a project that organizes and creates projects and tasks📝💼
 
