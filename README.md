@@ -3,7 +3,6 @@
     Project and task manager🌐🚀📝💼
 </h1>
 ## License
-![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)
 
 It is a project that organizes and creates projects and tasks📝💼
 
