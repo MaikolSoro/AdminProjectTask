@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-return */
 import React, { useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import AlertContext from '../../context/alerts/alertContext'
@@ -16,11 +17,11 @@ const NewAccount = () => {
     name: '',
     email: '',
     password: '',
-    confirmar: ''
+    confirm: ''
   })
 
   // extract form user
-  const { name, email, password, confirmar } = user
+  const { name, email, password, confirm } = user
 
   const onChangeRegister = (e) => {
     saveUser({
@@ -36,13 +37,21 @@ const NewAccount = () => {
     if (name.trim() === '' ||
       email.trim() === '' ||
       password.trim() === '' ||
-      confirmar.trim() === '') {
-      showAlert('Todos los campos son obligatorios', 'alert-error');
+      confirm.trim() === '') {
+      showAlert('Todos los campos son obligatorios', 'alert-error')
+      return;
     }
 
     // minimum password of 6 characters
-
+    if (password.length < 6) {
+      showAlert('El password debe ser de al menos 6 caracteres', 'alert-error')
+      return;
+    }
     // Check if the two passwords are the same
+    if (password !== confirm) {
+      showAlert('Los passwords no son iguales', 'alert-error')
+      return;
+    }
     // Pass it to action
   }
 
@@ -89,13 +98,13 @@ const NewAccount = () => {
             />
           </div>
           <div className="campo-form">
-            <label htmlFor="confirmar">Confirmar password</label>
+            <label htmlFor="confirm">Confirmar password</label>
             <input
               type="password"
-              id="confirmar"
-              name="confirmar"
+              id="confirm"
+              name="confirm"
               placeholder="Repite tu password"
-              value={confirmar}
+              value={confirm}
               onChange={onChangeRegister}
             />
           </div>
