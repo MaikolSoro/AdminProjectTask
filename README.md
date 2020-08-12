@@ -2,7 +2,12 @@
 <h1 align="center">
     Project and task manager🌐🚀📝💼
 </h1>
+
+
 ## License
+[![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/MaikolSoro/AdminProjectTask/blob/master/LICENSEs)
+
+
 
 It is a project that organizes and creates projects and tasks📝💼
 
