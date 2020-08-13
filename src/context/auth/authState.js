@@ -26,20 +26,25 @@ const AuthState = props => {
 	const [state, dispatch] = useReducer(AuthReducer, initialState);
 	// the functions
 
-	const registerUser = async data => {
+	const registerUser = async information => {
 		try {
-			const response = await clientAxios.post('/api/user', data)
-			console.log(response);
+			const response = await clientAxios.post('/api/users', information)
 
 			dispatch({
-				type: SUCCESSFUL_REGISTRATION
+				type: SUCCESSFUL_REGISTRATION,
+				payload: response.data
 			})
 
 		} catch (error) {
-			console.log(error);
+			// console.log(error);
+			const alert = {
+				msg: error.response.data.msg,
+				category: 'alert-error'
+			}
 
 			dispatch({
-				type: REGISTRATION_ERROR
+				type: REGISTRATION_ERROR,
+				payload: alert
 			})
 		}
 	}
