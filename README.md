@@ -1,6 +1,6 @@
 
 <h1 align="center">
-    Project and task manager🌐🚀📝💼
+    Project and task manager  🌐🚀📝💼
 </h1>
 
 
