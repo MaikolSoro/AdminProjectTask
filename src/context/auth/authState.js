@@ -7,7 +7,8 @@ import clientAxios from '../../config/axios';
 
 import {
 	SUCCESSFUL_REGISTRATION,
-	REGISTRATION_ERROR
+	REGISTRATION_ERROR,
+	LOGIN_ERROR
 	// GETTING_USER,
 	// LOGIN_SUCCESSFUL,
 	// LOGIN_ERROR,
@@ -34,6 +35,8 @@ const AuthState = props => {
 				type: SUCCESSFUL_REGISTRATION,
 				payload: response.data
 			})
+			// Getting the user
+			userAuthenticated()
 
 		} catch (error) {
 			// console.log(error);
@@ -45,6 +48,23 @@ const AuthState = props => {
 			dispatch({
 				type: REGISTRATION_ERROR,
 				payload: alert
+			})
+		}
+	}
+	// Return the user authenticated
+	const userAuthenticated = async () => {
+		const token = localStorage.getItem('token');
+		if (token) {
+			// TODO: Function to send the token by headers
+		}
+		try {
+			const response = await clientAxios.get('/api/auth');
+			console.log(response);
+		} catch (error) {
+			console.log(error);
+			dispatch({
+				type: LOGIN_ERROR
+
 			})
 		}
 	}
