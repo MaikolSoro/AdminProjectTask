@@ -3,6 +3,7 @@ import {
 	SUCCESSFUL_REGISTRATION,
 	REGISTRATION_ERROR,
 	LOGIN_ERROR,
+	GETTING_USER,
 	// 	GETTING_USER,
 	// 	LOGIN_SUCCESSFUL,
 	// 	LOGIN_ERROR,
@@ -27,7 +28,11 @@ export default (state, action) => {
 				token: null,
 				message: action.payload
 			}
-
+		case GETTING_USER:
+			return {
+				...state,
+				user: action.payload
+			}
 		default:
 			return state;
 	}

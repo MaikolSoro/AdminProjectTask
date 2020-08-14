@@ -3,12 +3,13 @@ import AuthContext from './authContext';
 import AuthReducer from './authReducer';
 
 import clientAxios from '../../config/axios';
-
+import tokenAuth from '../../config/token';
 
 import {
 	SUCCESSFUL_REGISTRATION,
 	REGISTRATION_ERROR,
-	LOGIN_ERROR
+	LOGIN_ERROR,
+	GETTING_USER
 	// GETTING_USER,
 	// LOGIN_SUCCESSFUL,
 	// LOGIN_ERROR,
@@ -56,9 +57,14 @@ const AuthState = props => {
 		const token = localStorage.getItem('token');
 		if (token) {
 			// TODO: Function to send the token by headers
+			tokenAuth(token);
 		}
 		try {
 			const response = await clientAxios.get('/api/auth');
+			dispatch({
+				type: GETTING_USER,
+				payload: response.data.user
+			});
 			console.log(response);
 		} catch (error) {
 			console.log(error);
