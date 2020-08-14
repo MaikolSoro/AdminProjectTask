@@ -1,11 +1,11 @@
 /* eslint-disable no-useless-return */
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import AlertContext from '../../context/alerts/alertContext'
 import AuthContext from '../../context/auth/authContext'
 
 
-const NewAccount = () => {
+const NewAccount = (props) => {
 
   // eslint-disable-next-line no-irregular-whitespace
   // Extract values ​​from context
@@ -15,9 +15,19 @@ const NewAccount = () => {
   const { alert, showAlert } = alertContext;
 
   const authContext = useContext(AuthContext);
-  const { registerUser } = authContext;
+  const { message, authenticated, registerUser } = authContext;
 
+  //  In case the user has authenticated or registered or is a duplicate registration
 
+  useEffect(() => {
+
+    if (authenticated) {
+      props.history.push('/projects')
+    }
+    if (message) {
+      showAlert(message.msg, message.category)
+    }
+  }, [message, authenticated, props.history])
 
   // STATE TO LOGIN
   const [user, saveUser] = useState({
