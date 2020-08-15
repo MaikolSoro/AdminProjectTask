@@ -16,7 +16,7 @@ const Bar = () => {
 	return (
 		<header className="app-header">
 			{
-				user ? <p className="nombre-usuario">Hola<span>{user.name}</span></p>
+				user ? <p className="nombre-usuario">Hola <span> {user.name}</span></p>
 					: null
 			}
 
