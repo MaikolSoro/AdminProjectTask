@@ -20,7 +20,8 @@ export default (state, action) => {
 			return {
 				...state,
 				authenticated: true,
-				message: null
+				message: null,
+				loading: false
 			}
 		case LOGOUT:
 		case LOGIN_ERROR:
@@ -31,13 +32,15 @@ export default (state, action) => {
 				token: null,
 				user: null,
 				authenticated: null,
-				message: action.payload
+				message: action.payload,
+				loading: false
 			}
 		case GETTING_USER:
 			return {
 				...state,
 				authenticated: true,
-				user: action.payload
+				user: action.payload,
+				loading: false
 			}
 		default:
 			return state;
