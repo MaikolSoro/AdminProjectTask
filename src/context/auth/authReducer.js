@@ -5,6 +5,7 @@ import {
 	LOGIN_ERROR,
 	GETTING_USER,
 	LOGIN_SUCCESSFUL,
+	LOGOUT,
 	// 	GETTING_USER,
 	// 	LOGIN_SUCCESSFUL,
 	// 	LOGIN_ERROR,
@@ -21,17 +22,21 @@ export default (state, action) => {
 				authenticated: true,
 				message: null
 			}
+		case LOGOUT:
 		case LOGIN_ERROR:
 		case REGISTRATION_ERROR:
 			localStorage.removeItem('token');
 			return {
 				...state,
 				token: null,
+				user: null,
+				authenticated: null,
 				message: action.payload
 			}
 		case GETTING_USER:
 			return {
 				...state,
+				authenticated: true,
 				user: action.payload
 			}
 		default:
