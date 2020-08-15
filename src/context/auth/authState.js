@@ -9,9 +9,9 @@ import {
 	SUCCESSFUL_REGISTRATION,
 	REGISTRATION_ERROR,
 	LOGIN_ERROR,
-	GETTING_USER
+	GETTING_USER,
 	// GETTING_USER,
-	// LOGIN_SUCCESSFUL,
+	LOGIN_SUCCESSFUL,
 	// LOGIN_ERROR,
 	// LOGOUT
 } from '../../types';
@@ -74,6 +74,34 @@ const AuthState = props => {
 			})
 		}
 	}
+
+	// when the user  login
+
+	const login = async info => {
+		try {
+			const response = await clientAxios.post('/api/auth', info);
+			console.log(response);
+			dispatch({
+				type: LOGIN_SUCCESSFUL,
+				payload: response.data
+			})
+
+			// Getting the user
+			userAuthenticated()
+		} catch (error) {
+
+			// console.log(error);
+			const alert = {
+				msg: error.response.data.msg,
+				category: 'alert-error'
+			}
+
+			dispatch({
+				type: LOGIN_ERROR,
+				payload: alert
+			})
+		}
+	}
 	return (
 		<AuthContext.Provider
 			value={{
@@ -81,7 +109,9 @@ const AuthState = props => {
 				authenticated: state.authenticated,
 				user: state.user,
 				message: state.message,
-				registerUser
+				registerUser,
+				login,
+				userAuthenticated
 			}}
 		>
 			{props.children}

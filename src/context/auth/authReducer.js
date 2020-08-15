@@ -4,6 +4,7 @@ import {
 	REGISTRATION_ERROR,
 	LOGIN_ERROR,
 	GETTING_USER,
+	LOGIN_SUCCESSFUL,
 	// 	GETTING_USER,
 	// 	LOGIN_SUCCESSFUL,
 	// 	LOGIN_ERROR,
@@ -12,7 +13,7 @@ import {
 
 export default (state, action) => {
 	switch (action.type) {
-
+		case LOGIN_SUCCESSFUL:
 		case SUCCESSFUL_REGISTRATION:
 			localStorage.setItem('token', action.payload.token);
 			return {
