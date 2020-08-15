@@ -1,7 +1,19 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
+import AlertContext from '../../context/alerts/alertContext'
+import AuthContext from '../../context/auth/authContext'
 
 const Login = () => {
+
+  // Extract values ​​from context
+  // eslint-disable-next-line no-undef
+  const alertContext = useContext(AlertContext);
+  const { alert, showAlert } = alertContext;
+
+  const authContext = useContext(AuthContext);
+  const { message, authenticated, login } = authContext;
+
+
   // STATE TO LOGIN
   const [user, saveUser] = useState({
     email: '',
@@ -23,10 +35,16 @@ const Login = () => {
 
     // Validate that there are no empty fields
 
+    if (email.trim() === '' || password.trim() === '') {
+      showAlert('Todos los campos son obligatorios', 'alert-error')
+    }
     // Pass it to action
+
+    login({ email, password });
   }
   return (
     <div className="form-usuario">
+      {alert ? (<div className={`alert ${alert.category}`}> {alert.msg}</div>) : null}
       <div className="contenedor-form  sombra-dark">
         <h1>Iniciar Sesión</h1>
 
@@ -62,11 +80,11 @@ const Login = () => {
 
         </form>
         <Link to={'/new-account'} className="enlace-cuenta">
-					Obtener cuenta
+          Obtener cuenta
         </Link>
       </div>
     </div>
-	 )
+  )
 }
 
 export default Login
