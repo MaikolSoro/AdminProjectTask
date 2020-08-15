@@ -8,11 +8,7 @@ import clientAxios from '../../config/axios'
 
 const ProjectState = props => {
 
-	const projects = [
-		{ id: 1, name: 'Tienda Virtual' },
-		{ id: 2, name: 'Internet' },
-		{ id: 3, name: 'Diseño de Sitio web' }
-	]
+
 	const initialState = {
 
 		projects: [],
@@ -34,11 +30,18 @@ const ProjectState = props => {
 
 	// Get the projects
 
-	const getProjects = () => {
-		dispatch({
-			type: GETPROJECTS,
-			payload: projects
-		})
+	const getProjects = async () => {
+		try {
+			const result = await clientAxios.get('/api/projects')
+
+			dispatch({
+				type: GETPROJECTS,
+				payload: result.data.projects
+			})
+		} catch (error) {
+
+		}
+
 	}
 
 	// Add new project
@@ -46,7 +49,7 @@ const ProjectState = props => {
 
 		try {
 
-			const result = await clientAxios.post('/api/projects', project);
+			const result = await clientAxios.post('/api/projects', project)
 			// Insert the project in the state
 			dispatch({
 				type: ADD_PROJECT,
