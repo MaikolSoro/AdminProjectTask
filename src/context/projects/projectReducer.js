@@ -9,6 +9,7 @@ export default (state, action) => {
 				form: true
 			}
 		case GETPROJECTS:
+			// console.log(action.payload)
 			return {
 				...state,
 				projects: action.payload
@@ -28,12 +29,12 @@ export default (state, action) => {
 		case CURRENT_PROJECT:
 			return {
 				...state,
-				project: state.projects.filter(project => project.id === action.payload)
+				project: state.projects.filter(project => project._id === action.payload)
 			}
 		case DELETE_PROJECT:
 			return {
 				...state,
-				projects: state.projects.filter(project => project.id !== action.payload),
+				projects: state.projects.filter(project => project._id !== action.payload),
 				project: null
 			}
 		default:

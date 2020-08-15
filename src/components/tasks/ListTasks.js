@@ -26,7 +26,7 @@ const ListTask = () => {
 
 	// Delete a project
 	const onClickDelete = () => {
-		deleteProject(currentProject.id)
+		deleteProject(currentProject._id)
 	}
 	return (
 		<Fragment>

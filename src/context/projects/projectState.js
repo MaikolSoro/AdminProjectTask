@@ -1,20 +1,14 @@
 /* eslint-disable no-unused-vars */
 
 import React, { useReducer } from 'react'
-import * as uuid from 'uuid'
-
 import ProjectContext from './projectContext'
 import ProjectReducer from './projectReducer'
 import { FORM_PROJECT, GETPROJECTS, ADD_PROJECT, VALIDATE_FORM, CURRENT_PROJECT, DELETE_PROJECT } from '../../types'
-
+import clientAxios from '../../config/axios'
 
 const ProjectState = props => {
 
-	const projects = [
-		{ id: 1, name: 'Tienda Virtual' },
-		{ id: 2, name: 'Internet' },
-		{ id: 3, name: 'Diseño de Sitio web' }
-	]
+
 	const initialState = {
 
 		projects: [],
@@ -36,22 +30,35 @@ const ProjectState = props => {
 
 	// Get the projects
 
-	const getProjects = () => {
-		dispatch({
-			type: GETPROJECTS,
-			payload: projects
-		})
+	const getProjects = async () => {
+		try {
+			const result = await clientAxios.get('/api/projects')
+
+			dispatch({
+				type: GETPROJECTS,
+				payload: result.data.projects
+			})
+		} catch (error) {
+			console.log(error)
+		}
+
 	}
 
 	// Add new project
-	const AddProject = project => {
-		project.id = uuid.v4();
+	const AddProject = async project => {
 
-		// Insert the project in the state
-		dispatch({
-			type: ADD_PROJECT,
-			payload: project
-		})
+		try {
+
+			const result = await clientAxios.post('/api/projects', project)
+			// console.log(result)
+			// Insert the project in the state
+			dispatch({
+				type: ADD_PROJECT,
+				payload: result.data
+			})
+		} catch (error) {
+			console.log(error)
+		}
 	}
 
 	// Valid the form for errors
@@ -71,11 +78,17 @@ const ProjectState = props => {
 
 	// Delete a project
 
-	const deleteProject = projectId => {
-		dispatch({
-			type: DELETE_PROJECT,
-			payload: projectId
-		})
+	const deleteProject = async projectId => {
+		try {
+
+			await clientAxios.delete(`/api/projects/${projectId}`)
+			dispatch({
+				type: DELETE_PROJECT,
+				payload: projectId
+			})
+		} catch (error) {
+			console.log(error)
+		}
 	}
 
 	return (
