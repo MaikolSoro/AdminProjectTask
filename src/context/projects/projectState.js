@@ -1,12 +1,10 @@
 /* eslint-disable no-unused-vars */
 
 import React, { useReducer } from 'react'
-import * as uuid from 'uuid'
-
 import ProjectContext from './projectContext'
 import ProjectReducer from './projectReducer'
 import { FORM_PROJECT, GETPROJECTS, ADD_PROJECT, VALIDATE_FORM, CURRENT_PROJECT, DELETE_PROJECT } from '../../types'
-
+import clientAxios from '../../config/axios'
 
 const ProjectState = props => {
 
@@ -44,14 +42,19 @@ const ProjectState = props => {
 	}
 
 	// Add new project
-	const AddProject = project => {
-		project.id = uuid.v4();
+	const AddProject = async project => {
 
-		// Insert the project in the state
-		dispatch({
-			type: ADD_PROJECT,
-			payload: project
-		})
+		try {
+
+			const result = await clientAxios.post('/api/projects', project);
+			// Insert the project in the state
+			dispatch({
+				type: ADD_PROJECT,
+				payload: project
+			})
+		} catch (error) {
+
+		}
 	}
 
 	// Valid the form for errors
