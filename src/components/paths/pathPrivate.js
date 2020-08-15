@@ -9,6 +9,7 @@ const PathPrivate = ({ component: Component, ...props }) => {
 
 	useEffect(() => {
 		userAuthenticated()
+		// eslint-disable-next-line
 	}, [])
 	return (
 		<Route
