@@ -3,7 +3,15 @@
 import React, { useReducer } from 'react'
 import ProjectContext from './projectContext'
 import ProjectReducer from './projectReducer'
-import { FORM_PROJECT, GETPROJECTS, ADD_PROJECT, VALIDATE_FORM, CURRENT_PROJECT, DELETE_PROJECT } from '../../types'
+import {
+	FORM_PROJECT,
+	GETPROJECTS,
+	ADD_PROJECT,
+	VALIDATE_FORM,
+	CURRENT_PROJECT,
+	DELETE_PROJECT,
+	PROJECT_ERROR
+} from '../../types'
 import clientAxios from '../../config/axios'
 
 const ProjectState = props => {
@@ -14,7 +22,8 @@ const ProjectState = props => {
 		projects: [],
 		form: false,
 		errorform: false,
-		project: null
+		project: null,
+		message: null
 	}
 
 	// Dispatch to execute actions
@@ -39,7 +48,14 @@ const ProjectState = props => {
 				payload: result.data.projects
 			})
 		} catch (error) {
-			console.log(error)
+			const alert = {
+				msg: 'Hubo un error',
+				category: 'alert-error'
+			}
+			dispatch({
+				type: PROJECT_ERROR,
+				payload: alert
+			})
 		}
 
 	}
@@ -57,7 +73,14 @@ const ProjectState = props => {
 				payload: result.data
 			})
 		} catch (error) {
-			console.log(error)
+			const alert = {
+				msg: 'Hubo un error',
+				category: 'alert-error'
+			}
+			dispatch({
+				type: PROJECT_ERROR,
+				payload: alert
+			})
 		}
 	}
 
@@ -87,7 +110,15 @@ const ProjectState = props => {
 				payload: projectId
 			})
 		} catch (error) {
-			console.log(error)
+
+			const alert = {
+				msg: 'Hubo un error',
+				category: 'alert-error'
+			}
+			dispatch({
+				type: PROJECT_ERROR,
+				payload: alert
+			})
 		}
 	}
 
@@ -98,6 +129,7 @@ const ProjectState = props => {
 				form: state.form,
 				errorform: state.errorform,
 				project: state.project,
+				message: state.message,
 				showForm,
 				getProjects,
 				AddProject,
