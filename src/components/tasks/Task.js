@@ -12,14 +12,14 @@ const Task = ({ task }) => {
 
 	// Getting function from task context
 	const tasksContext = useContext(taskContext)
-	const { deleteTask, getTasks, changeStatusTask, saveCurrentTask } = tasksContext
+	const { deleteTask, getTasks, updateTask, saveCurrentTask } = tasksContext
 
 	// Extract the project
 	const [currentProject] = project
 
 	// Function that is executed, when the user presses the delete task button
 	const taskDelete = (id) => {
-		deleteTask(id)
+		deleteTask(id, currentProject._id)
 		getTasks(currentProject.id)
 	}
 
@@ -30,7 +30,7 @@ const Task = ({ task }) => {
 		} else {
 			task.state = true
 		}
-		changeStatusTask(task)
+		updateTask(task)
 	}
 	// Add a current task when the user wants to edit it
 	const selectTask = (task) => {
@@ -69,7 +69,7 @@ const Task = ({ task }) => {
 				<button
 					type="button"
 					className="btn btn-segundario"
-					onClick={() => taskDelete(task.id)}
+					onClick={() => taskDelete(task._id)}
 				>Eliminar</button>
 			</div>
 		</li>

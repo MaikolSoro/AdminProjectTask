@@ -57,8 +57,7 @@ const FormTasks = () => {
 			// new task
 
 			// Add the new task to the task state
-			task.state = false
-			task.projectId = currentProject.id
+			task.project = currentProject._id
 			addTask(task)
 		} else {
 			// Update existing task
