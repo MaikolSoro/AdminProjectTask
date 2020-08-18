@@ -3,7 +3,6 @@ import {
 	ADD_TASK,
 	VALIDATE_TASK,
 	DELETE_TASK,
-	STATE_TASK,
 	CURRENT_TASK,
 	UPDATE_TASK,
 	ClEANTASK
@@ -34,10 +33,9 @@ export default (state, action) => {
 				tasksproject: state.tasksproject.filter(task => task._id !== action.payload)
 			}
 		case UPDATE_TASK:
-		case STATE_TASK:
 			return {
 				...state,
-				tasksproject: state.tasksproject.map(task => task.id === action.payload.id ? action.payload : task)
+				tasksproject: state.tasksproject.map(task => task._id === action.payload._id ? action.payload : task)
 			}
 		case CURRENT_TASK:
 			return {

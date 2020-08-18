@@ -7,7 +7,6 @@ import {
 	ADD_TASK,
 	VALIDATE_TASK,
 	DELETE_TASK,
-	STATE_TASK,
 	CURRENT_TASK,
 	UPDATE_TASK,
 	ClEANTASK
@@ -83,14 +82,6 @@ const TaskState = props => {
 
 	}
 
-	// Change the status of each task
-	const changeStatusTask = (task) => {
-
-		dispatch({
-			type: STATE_TASK,
-			payload: task
-		})
-	}
 
 	// Extract a task for editing
 	const saveCurrentTask = task => {
@@ -101,11 +92,19 @@ const TaskState = props => {
 	}
 
 	// Edit or modify new task 
-	const updateTask = (task) => {
-		dispatch({
-			type: UPDATE_TASK,
-			payload: task
-		})
+	const updateTask = async (task) => {
+
+		try {
+			const result = await clientAxios.put(`/api/tasks/${task._id}`, task)
+			console.log(result)
+			dispatch({
+				type: UPDATE_TASK,
+				payload: result.data.taskExists
+			})
+		} catch (error) {
+			console.log(error)
+		}
+
 	}
 
 	const cleanTask = () => {
@@ -125,7 +124,6 @@ const TaskState = props => {
 				addTask,
 				validTask,
 				deleteTask,
-				changeStatusTask,
 				saveCurrentTask,
 				updateTask,
 				cleanTask
