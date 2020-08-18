@@ -19,7 +19,7 @@ const Task = ({ task }) => {
 
 	// Function that is executed, when the user presses the delete task button
 	const taskDelete = (id) => {
-		deleteTask(id)
+		deleteTask(id, currentProject._id)
 		getTasks(currentProject.id)
 	}
 
@@ -69,7 +69,7 @@ const Task = ({ task }) => {
 				<button
 					type="button"
 					className="btn btn-segundario"
-					onClick={() => taskDelete(task.id)}
+					onClick={() => taskDelete(task._id)}
 				>Eliminar</button>
 			</div>
 		</li>
