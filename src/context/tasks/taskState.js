@@ -9,7 +9,7 @@ import {
 	DELETE_TASK,
 	CURRENT_TASK,
 	UPDATE_TASK,
-	ClEANTASK
+	CLEAN_WORK
 } from '../../types';
 
 
@@ -32,7 +32,6 @@ const TaskState = props => {
 
 		try {
 			const result = await clientAxios.get('/api/tasks', { params: { project } })
-			console.log(result)
 			dispatch({
 				type: TASKS_PROJECT,
 				payload: result.data.tasks
@@ -96,7 +95,6 @@ const TaskState = props => {
 
 		try {
 			const result = await clientAxios.put(`/api/tasks/${task._id}`, task)
-			console.log(result)
 			dispatch({
 				type: UPDATE_TASK,
 				payload: result.data.taskExists
@@ -109,8 +107,7 @@ const TaskState = props => {
 
 	const cleanTask = () => {
 		dispatch({
-			type: ClEANTASK,
-
+			type: CLEAN_WORK
 		})
 	}
 	return (
