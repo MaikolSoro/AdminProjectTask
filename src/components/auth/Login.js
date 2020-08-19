@@ -15,7 +15,6 @@ const Login = (props) => {
 
   //  In case of that the password  or user not exist
   useEffect(() => {
-
     if (authenticated) {
       props.history.push('/projects')
     }
