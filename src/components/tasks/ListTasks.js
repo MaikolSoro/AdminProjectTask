@@ -41,7 +41,7 @@ const ListTask = () => {
 								<CSSTransition
 									key={task._id}
 									timeout={200}
-									classNames="tarea"
+									className="tarea"
 
 								>
 									<Task

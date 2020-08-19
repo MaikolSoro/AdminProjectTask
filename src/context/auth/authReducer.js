@@ -5,11 +5,8 @@ import {
 	LOGIN_ERROR,
 	GETTING_USER,
 	LOGIN_SUCCESSFUL,
-	LOGOUT,
-	// 	GETTING_USER,
-	// 	LOGIN_SUCCESSFUL,
-	// 	LOGIN_ERROR,
-	// 	LOGOUT
+	LOGOUT
+
 } from '../../types';
 
 export default (state, action) => {
