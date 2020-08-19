@@ -345,7 +345,7 @@ aside  {
   width: 100%;
 }
 @media (min-width:768px) {
-  .alerta {
+  .alert {
       width: auto;
       top: 30px;
       right: 10px;
