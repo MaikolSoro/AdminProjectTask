@@ -30,5 +30,6 @@ It is a project that organizes and creates projects and tasks📝💼
 - Reactjs
 - Nodejs
 - MongoDB
-
+## 📷 Preview
+![Captura de pantalla (123)](https://user-images.githubusercontent.com/46753453/92552151-35def900-f21d-11ea-98f7-5addb63f53fc.png)
 
